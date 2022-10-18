@@ -1,0 +1,29 @@
+name: sample_flutter_project
+version: 1.0.0+1
+publish_to: none
+description: Sample project using clean architechture and getx
+environment: 
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies: 
+  dartz: any
+  equatable: any
+  connectivity_plus: any
+  cupertino_icons: ^1.0.2
+  get:
+  url_launcher:
+  json_annotation:
+  dio:
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+  build_runner:
+  json_serializable:
+
+flutter: 
+  uses-material-design: true
+
