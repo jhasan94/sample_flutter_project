@@ -9,11 +9,13 @@ class ArticleModel extends Article {
     required String content,
     required String url,
     required String urlToImage,
+    required DateTime publishedAt
   }) : super(
       title: title,
       content: content,
       url: url,
-      urlToImage: urlToImage);
+      urlToImage: urlToImage,
+      publishedAt: publishedAt);
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) =>
       _$ArticleModelFromJson(json);

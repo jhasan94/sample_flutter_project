@@ -4,9 +4,9 @@ import 'package:sample_flutter_project/core/use_cases/use_case.dart';
 import 'package:sample_flutter_project/features/article/domain/entities/article.dart';
 import 'package:sample_flutter_project/features/article/domain/repositories/articles_repository.dart';
 
-class GetArticles implements UseCase<List<Article>, NoParams> {
+class GetArticlesUseCase implements UseCase<List<Article>, NoParams> {
   final ArticleRepository articleRepository;
-  GetArticles(this.articleRepository);
+  GetArticlesUseCase(this.articleRepository);
   @override
   Future<Either<Failure, List<Article>>> call(NoParams params) async{
     return articleRepository.getArticle();
