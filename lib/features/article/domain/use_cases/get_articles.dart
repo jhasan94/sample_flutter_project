@@ -8,8 +8,7 @@ class GetArticlesUseCase implements BaseUseCase<ArticleList, NoParams> {
   final ArticleRepository articleRepository;
   GetArticlesUseCase(this.articleRepository);
   @override
-  Future<Either<Failure, ArticleList>> call(NoParams params) async{
+  Future<Either<Failure, ArticleList>> call(NoParams params) async {
     return articleRepository.getArticle();
   }
-
 }
