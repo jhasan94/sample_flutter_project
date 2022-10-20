@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sample_flutter_project/config/env.dart';
 import 'package:sample_flutter_project/core/widgets/index.dart' as core_widgets;
 import 'package:sample_flutter_project/features/article/presentation/manager/home/home_logic.dart';
 import 'package:sample_flutter_project/features/article/presentation/manager/home/home_state.dart';
@@ -19,17 +20,17 @@ class HomePage extends GetView<HomeLogic> {
       backgroundColor: Colors.yellow,
       title: Row(
         mainAxisSize: MainAxisSize.min,
-        children: const [
-          Icon(
+        children: [
+          const Icon(
             Icons.adb,
             color: Colors.black,
           ),
-          SizedBox(
+          const SizedBox(
             width: 6.0,
           ),
           Text(
-            'NewsReader',
-            style: TextStyle(
+            Env.value.appName,
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.0,

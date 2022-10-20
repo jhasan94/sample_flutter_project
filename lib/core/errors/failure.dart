@@ -1,8 +1,8 @@
 class Failure {
-  const Failure(this.message);
-  final String message;
+  const Failure(this.errorMessage);
+  final String errorMessage;
   @override
   String toString() {
-    return message;
+    return errorMessage;
   }
 }
