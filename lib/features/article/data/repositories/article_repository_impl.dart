@@ -10,11 +10,11 @@ class ArticleRepositoryImpl implements ArticleRepository{
 
   ArticleRepositoryImpl({required this.articleRemoteDataSource});
   @override
-  Future<Either<Failure, List<Article>>> getArticle() async{
+  Future<Either<Failure, ArticleList>> getArticle() async{
     try {
       final response = await articleRemoteDataSource.getArticles();
       return response.fold((failure) => Left(failure), (articles) async {
-        if (articles.isNotEmpty) {
+        if (articles.articles.isNotEmpty) {
           return Right(articles);
         }
         return const Left(Failure('Can not find articles right now'));

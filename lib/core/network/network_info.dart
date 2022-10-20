@@ -13,7 +13,7 @@ class NetworkInfo implements NetworkInfoI {
   @override
   Future<bool> isConnected() async {
     final result = await connectivity.checkConnectivity();
-    if (result != ConnectivityResult.none) {
+    if (result == ConnectivityResult.wifi) {
       return true;
     }
     return false;

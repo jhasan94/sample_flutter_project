@@ -1,2 +1,2 @@
-const loadingAsset = 'assets/images/loading.jpg';
-const placeholderAsset = 'assets/images/placeHolder.jpg';
+const loadingAsset = 'assets/download.gif';
+const placeholderAsset = 'assets/propsoft_icon.png';

@@ -15,7 +15,7 @@ class DioNetworkClient {
   static Dio createDio() {
     var dio = Dio(BaseOptions(
       baseUrl: Endpoints.baseUrl,
-      receiveTimeout:Endpoints.receiveTimeout, // 15 seconds
+      receiveTimeout: Endpoints.receiveTimeout, // 15 seconds
       connectTimeout: Endpoints.connectionTimeout,
       sendTimeout: 15000,
     ));
@@ -32,14 +32,13 @@ class DioNetworkClient {
     return dio;
   }
 
-
   Future<Response> get(
-      String url, {
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        CancelToken? cancelToken,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String url, {
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await dio.get(
         url,
@@ -56,14 +55,14 @@ class DioNetworkClient {
 
   // Post:----------------------------------------------------------------------
   Future<Response> post(
-      String uri, {
-        data,
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        CancelToken? cancelToken,
-        ProgressCallback? onSendProgress,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await dio.post(
         uri,
@@ -82,14 +81,14 @@ class DioNetworkClient {
 
   // Put:-----------------------------------------------------------------------
   Future<Response> put(
-      String uri, {
-        data,
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        CancelToken? cancelToken,
-        ProgressCallback? onSendProgress,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await dio.put(
         uri,
@@ -108,14 +107,14 @@ class DioNetworkClient {
 
   // Delete:--------------------------------------------------------------------
   Future<dynamic> delete(
-      String uri, {
-        data,
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        CancelToken? cancelToken,
-        ProgressCallback? onSendProgress,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String uri, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await dio.delete(
         uri,

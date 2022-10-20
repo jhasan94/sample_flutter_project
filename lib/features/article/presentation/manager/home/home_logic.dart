@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:get/get.dart';
 import 'package:sample_flutter_project/core/errors/failure.dart';
 import 'package:sample_flutter_project/core/network/network_info.dart';
-import 'package:sample_flutter_project/core/use_cases/use_case.dart';
+import 'package:sample_flutter_project/core/use_cases/base_use_case.dart';
 import 'package:sample_flutter_project/features/article/domain/entities/article.dart';
 import 'package:sample_flutter_project/features/article/domain/use_cases/get_articles.dart';
 import 'home_state.dart';
@@ -12,10 +12,13 @@ class HomeLogic extends GetxController {
   //final HomeState state = HomeState();
 
   // network info
-  final NetworkInfoI network ;
-  final GetArticlesUseCase getRemoteArticles ;
+  final NetworkInfoI network;
+  final GetArticlesUseCase getRemoteArticles;
 
-  HomeLogic({required this.network, required this.getRemoteArticles,});
+  HomeLogic({
+    required this.network,
+    required this.getRemoteArticles,
+  });
   //final getLocalArticles = Injector.resolve<GetArticles>();
 
   // view state reactive value
@@ -85,6 +88,7 @@ class HomeLogic extends GetxController {
     localArticlesView = true;
     if (viewState.value == ViewState.busy) return;
     _setState(ViewState.busy);
+
     /// We will focus in future for local storage
     //final result = await getLocalArticles.call(NoParams());
     final result = await getRemoteArticles.call(NoParams());
@@ -92,7 +96,7 @@ class HomeLogic extends GetxController {
   }
 
   // handle api fetch result
-  void _handleFetchResult(Either<Failure, List<Article>> result,
+  void _handleFetchResult(Either<Failure, ArticleList> result,
       [bool local = false]) {
     result.fold((failure) {
       _articles?.clear();
@@ -100,7 +104,7 @@ class HomeLogic extends GetxController {
       Get.snackbar('Refresh failed!', "Can't load articles",
           snackPosition: SnackPosition.BOTTOM);
     }, (data) {
-      _articles = data;
+      _articles = data.articles;
       _setState(ViewState.data);
       final notifyLocal = local ? '(offline mode)' : '';
       Get.snackbar('Refresh successfully!',
@@ -114,5 +118,4 @@ class HomeLogic extends GetxController {
     viewState.value = state;
     historyViewState.add(state);
   }
-
 }

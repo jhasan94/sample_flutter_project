@@ -5,7 +5,7 @@ class TokenRepository{
   }
   Future<int> getAccessTokenRemainingTime()async{
     ///to-do
-    return 10;
+    return 100;
   }
   persistAccessToken(dynamic value)async{
 
