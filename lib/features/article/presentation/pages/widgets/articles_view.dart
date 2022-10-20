@@ -11,7 +11,8 @@ class ArticlesView extends StatelessWidget {
   const ArticlesView({super.key, required this.articles, required this.fetch});
 
   Widget buildArticleTile(Article article) {
-    final formattedTime = DateFormat('dd MMM - HH:mm').format(article.publishedAt);
+    final formattedTime =
+        DateFormat('dd MMM - HH:mm').format(article.publishedAt);
     return Row(
       children: [
         core_widgets.ImageHandlerWidget(urlToImage: article.urlToImage),

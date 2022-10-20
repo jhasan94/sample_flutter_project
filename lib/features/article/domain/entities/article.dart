@@ -7,8 +7,8 @@ class ArticleList {
     required this.articles,
   });
 
-  final String? status;
-  final int? totalResults;
+  final String status;
+  final int totalResults;
   final List<Article> articles;
 
   factory ArticleList.fromJson(String str) =>
@@ -47,13 +47,13 @@ class Article {
 
   factory Article.fromMap(Map<String, dynamic> json) => Article(
         source: Source.fromMap(json["source"]),
-        author: json["author"],
+        author: json["author"] ?? "auhthor",
         title: json["title"],
-        description: json["description"],
+        description: json["description"] ?? "description",
         url: json["url"],
         urlToImage: json["urlToImage"],
         publishedAt: DateTime.parse(json["publishedAt"]),
-        content: json["content"],
+        content: json["content"] ?? "content",
       );
 }
 
@@ -63,8 +63,8 @@ class Source {
     required this.name,
   });
 
-  final String? id;
-  final String? name;
+  final String id;
+  final String name;
 
   factory Source.fromJson(String str) => Source.fromMap(json.decode(str));
 

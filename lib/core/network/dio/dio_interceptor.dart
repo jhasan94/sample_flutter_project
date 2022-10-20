@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:sample_flutter_project/core/network/dio/token_repository.dart';
 
 class AppInterceptors extends Interceptor {
   final Dio dio;
@@ -9,7 +8,7 @@ class AppInterceptors extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    var accessToken = await TokenRepository().getAccessToken();
+    //var accessToken = await TokenRepository().getAccessToken();
 
     // if (accessToken != null) {
     //   var expiration = await TokenRepository().getAccessTokenRemainingTime();
@@ -64,7 +63,6 @@ class AppInterceptors extends Interceptor {
 
     return handler.next(err);
   }
-
 }
 
 class BadRequestException extends DioError {

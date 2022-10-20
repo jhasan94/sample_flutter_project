@@ -4,13 +4,12 @@ import 'package:sample_flutter_project/features/article/data/remote/data_sources
 import 'package:sample_flutter_project/features/article/domain/entities/article.dart';
 import 'package:sample_flutter_project/features/article/domain/repositories/articles_repository.dart';
 
-class ArticleRepositoryImpl implements ArticleRepository{
-
+class ArticleRepositoryImpl implements ArticleRepository {
   final ArticleRemoteDataSource articleRemoteDataSource;
 
   ArticleRepositoryImpl({required this.articleRemoteDataSource});
   @override
-  Future<Either<Failure, ArticleList>> getArticle() async{
+  Future<Either<Failure, ArticleList>> getArticle() async {
     try {
       final response = await articleRemoteDataSource.getArticles();
       return response.fold((failure) => Left(failure), (articles) async {
@@ -23,5 +22,4 @@ class ArticleRepositoryImpl implements ArticleRepository{
       return const Left(Failure('Something went wrong'));
     }
   }
-
 }

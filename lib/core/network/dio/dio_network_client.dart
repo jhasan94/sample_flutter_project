@@ -3,7 +3,7 @@ import 'package:sample_flutter_project/core/network/end_points.dart';
 import 'package:sample_flutter_project/core/network/dio/dio_interceptor.dart';
 
 class DioNetworkClient {
-  final dio = createDio();
+  final _dio = createDio();
   final tokenDio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl));
 
   DioNetworkClient._internal();
@@ -19,16 +19,18 @@ class DioNetworkClient {
       connectTimeout: Endpoints.connectionTimeout,
       sendTimeout: 15000,
     ));
-    dio.interceptors.add(LogInterceptor(
-      request: true,
-      requestHeader: true,
-      requestBody: true,
-      responseHeader: true,
-      responseBody: true,
-    ));
-    dio.interceptors.addAll({
-      AppInterceptors(dio,),
-    });
+    dio.interceptors.addAll([
+      AppInterceptors(
+        dio,
+      ),
+      LogInterceptor(
+        request: true,
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+        responseBody: true,
+      )
+    ]);
     return dio;
   }
 
@@ -40,7 +42,7 @@ class DioNetworkClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await dio.get(
+      final Response response = await _dio.get(
         url,
         queryParameters: queryParameters,
         options: options,
@@ -64,7 +66,7 @@ class DioNetworkClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await dio.post(
+      final Response response = await _dio.post(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -90,7 +92,7 @@ class DioNetworkClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await dio.put(
+      final Response response = await _dio.put(
         uri,
         data: data,
         queryParameters: queryParameters,
@@ -116,7 +118,7 @@ class DioNetworkClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     try {
-      final Response response = await dio.delete(
+      final Response response = await _dio.delete(
         uri,
         data: data,
         queryParameters: queryParameters,

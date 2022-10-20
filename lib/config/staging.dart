@@ -1,7 +1,7 @@
 import 'env.dart';
 
 class Staging extends Env {
-  Staging(){
+  Staging() {
     envType = EnvType.staging;
     appName = 'Staging';
     baseUrl = '';
