@@ -16,6 +16,9 @@ dependencies:
   dio:
   intl:
   logging:
+  path_provider:
+  image_gallery_saver:
+  permission_handler: 
   flutter: 
     sdk: flutter
 
