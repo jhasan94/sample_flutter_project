@@ -39,7 +39,7 @@ class Article {
   final String title;
   final String description;
   final String url;
-  final String urlToImage;
+  final String? urlToImage;
   final DateTime publishedAt;
   final String content;
 
